@@ -60,4 +60,44 @@ const student1 = new StudentClass("Bob", "Brown");
 console.log(printTeacher(teacher1.firstName, teacher1.lastName));
 console.log(student1.displayName(), student1.workOnHomework());
 console.log(director1);
+// -------------------------
+// Teacher interface
+// -------------------------
+interface Teacher {
+  readonly firstName: string;      // Only settable on initialization
+  readonly lastName: string;       // Only settable on initialization
+  fullTimeEmployee: boolean;       // Mandatory
+  yearsOfExperience?: number;      // Optional
+  location: string;                // Mandatory
+  [key: string]: any;              // Allow extra properties like 'contract'
+}
+
+// -------------------------
+// Directors interface extending Teacher
+// -------------------------
+interface Directors extends Teacher {
+  numberOfReports: number;         // Mandatory Director-specific property
+}
+
+// -------------------------
+// Example usage
+// -------------------------
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17,
+};
+
+console.log(director1);
+
+/* Expected console output:
+Object
+firstName: "John"
+fullTimeEmployee: true
+lastName: "Doe"
+location: "London"
+numberOfReports: 17
+*/
 
