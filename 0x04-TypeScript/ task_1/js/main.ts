@@ -61,43 +61,20 @@ console.log(printTeacher(teacher1.firstName, teacher1.lastName));
 console.log(student1.displayName(), student1.workOnHomework());
 console.log(director1);
 // -------------------------
-// Teacher interface
+// Interface for the printTeacher function
 // -------------------------
-interface Teacher {
-  readonly firstName: string;      // Only settable on initialization
-  readonly lastName: string;       // Only settable on initialization
-  fullTimeEmployee: boolean;       // Mandatory
-  yearsOfExperience?: number;      // Optional
-  location: string;                // Mandatory
-  [key: string]: any;              // Allow extra properties like 'contract'
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
 }
 
 // -------------------------
-// Directors interface extending Teacher
+// Function declaration matching the interface
 // -------------------------
-interface Directors extends Teacher {
-  numberOfReports: number;         // Mandatory Director-specific property
+function printTeacher(firstName: string, lastName: string): string {
+  return firstName[0] + '. ' + lastName;
 }
 
 // -------------------------
 // Example usage
 // -------------------------
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-
-console.log(director1);
-
-/* Expected console output:
-Object
-firstName: "John"
-fullTimeEmployee: true
-lastName: "Doe"
-location: "London"
-numberOfReports: 17
-*/
-
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
