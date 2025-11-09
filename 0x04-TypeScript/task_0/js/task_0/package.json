@@ -1,1 +1,15 @@
-
+{
+  "name": "task_0",
+  "version": "1.0.0",
+  "description": "Task 0 - Student interface",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
