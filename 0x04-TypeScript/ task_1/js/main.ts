@@ -60,21 +60,15 @@ const student1 = new StudentClass("Bob", "Brown");
 console.log(printTeacher(teacher1.firstName, teacher1.lastName));
 console.log(student1.displayName(), student1.workOnHomework());
 console.log(director1);
-// -------------------------
 // Interface for the printTeacher function
-// -------------------------
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// -------------------------
-// Function declaration matching the interface
-// -------------------------
+// Function declaration (must be named exactly "printTeacher")
 function printTeacher(firstName: string, lastName: string): string {
   return firstName[0] + '. ' + lastName;
 }
 
-// -------------------------
 // Example usage
-// -------------------------
-console.log(printTeacher("John", "Doe")); // Output: J. Doe
+console.log(printTeacher("John", "Doe")); // J. Doe
