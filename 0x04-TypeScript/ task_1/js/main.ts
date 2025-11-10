@@ -10,18 +10,16 @@ interface Teacher {
 interface Director extends Teacher {
   numberOfReports: number;
 }
-
-// needed for the checker
-// function printTeacher(
-// { firstName, lastName }
-
-export interface "Function printTeacher(" {
-  (firstName: string, lastName: string): string;
+interface Teacher {
+  firstName: string;
+  lastName: string;
 }
 
-export function printTeacher(firstName: string, lastName: string): string {
-  // return `${firstName}. ${lastName}`
-  return `${firstName[0]}. ${lastName}`;
+function printTeacher(firstName: string, lastName: string): string {
+  const firstInitial = firstName.charAt(0);
+  return `${firstInitial}. ${lastName}`;
+}
+
 }
 
 
