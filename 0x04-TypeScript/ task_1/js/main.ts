@@ -14,13 +14,15 @@ interface Teacher {
   firstName: string;
   lastName: string;
 }
-
-function printTeacher(firstName: string, lastName: string): string {
-  const firstInitial = firstName.charAt(0);
-  return `${firstInitial}. ${lastName}`;
+export interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
 }
 
+export function printTeacher(firstName: string, lastName: string): string {
+  // return `${firstName}. ${lastName}`
+  return `${firstName[0]}. ${lastName}`;
 }
+
 
 
 
