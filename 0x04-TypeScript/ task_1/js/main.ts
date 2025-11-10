@@ -15,14 +15,12 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
-  return `${firstName[0]}. ${lastName}`;
+function printTeacher(firstName: string, lastName: string): string {
+  const tmp = { firstName, lastName };
+  const firstInitial = firstName.charAt(0);
+  return `${firstInitial}. ${lastName}`;
 }
 
-interface StudentClassConstructor {
-  firstName: string;
-  lastName: string;
-}
 
 interface StudentClassInterface {
   workOnHomework(): string;
