@@ -15,16 +15,15 @@ export type Employee = Director | Teacher;
 
 // Type predicate to check if an employee is a Director
 export function isDirector(employee: Employee): employee is Director {
-  return (employee as Director).workDirectorTasks !== undefined;
+  return "workDirectorTasks" in employee;
 }
 
 // Function that executes work based on employee type
 export function executeWork(employee: Employee): string {
   if (isDirector(employee)) {
-    return employee.workDirectorTasks();   // ✅ must return
-  } else {
-    return (employee as Teacher).workTeacherTasks(); // ✅ must return
+    return employee.workDirectorTasks();   // ✅ returns director tasks
   }
+  return employee.workTeacherTasks();      // ✅ returns teacher tasks
 }
 
 // Factory function to create employees
