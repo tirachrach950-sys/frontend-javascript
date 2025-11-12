@@ -1,50 +1,39 @@
-interface Teacher {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
+interface Student {
+  firstName: string;
+  lastName: string;
+  age: number;
   location: string;
-  [key: string]: any;
 }
 
-interface Director extends Teacher {
-  numberOfReports: number;
-}
-interface Teacher {
-  firstName: string;
-  lastName: string;
-}
-export interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
-}
+const student1: Student = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 20,
+  location: 'London',
+};
 
-export function printTeacher(firstName: string, lastName: string): string {
-  // return `${firstName}. ${lastName}`
-  return `${firstName[0]}. ${lastName}`;
-}
+const student2: Student = {
+  firstName: 'Jane',
+  lastName: 'Smith',
+  age: 22,
+  location: 'Paris',
+};
 
+const studentsList: Student[] = [student1, student2];
 
+const table = document.createElement('table');
+studentsList.forEach((student) => {
+  const row = document.createElement('tr');
 
+  const nameCell = document.createElement('td');
+  nameCell.textContent = student.firstName;
 
-interface StudentClassInterface {
-  workOnHomework(): string;
-  displayName(): string;
-}
+  const locationCell = document.createElement('td');
+  locationCell.textContent = student.location;
 
-class StudentClass {
-  firstName: string;
-  lastName: string;
+  row.appendChild(nameCell);
+  row.appendChild(locationCell);
+  table.appendChild(row);
+});
 
-  constructor(firstName: string, lastName: string) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  workOnHomework(): string {
-    return "Currently working";
-  }
-
-  displayName(): string {
-    return this.firstName;
-  }
-}
+document.body.appendChild(table);
