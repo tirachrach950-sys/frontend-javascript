@@ -1,49 +1,50 @@
 // Interfaces for employees
-interface Director {
+export interface Director {
   name: string;
   salary: number;
+  workDirectorTasks(): string;
 }
 
-interface Teacher {
+export interface Teacher {
   name: string;
   salary: number;
+  workTeacherTasks(): string;
 }
 
-type Employee = Director | Teacher;
-
-// Functions that simulate work tasks
-function workDirectorTasks(): void {
-  console.log("Getting to director tasks");
-}
-
-function workTeacherTasks(): void {
-  console.log("Getting to work");
-}
-
-// Factory function to create employees based on salary
-function createEmployee(salary: number): Employee {
-  if (salary < 500) {
-    return { name: "Teacher Employee", salary } as Teacher;
-  } else {
-    return { name: "Director Employee", salary } as Director;
-  }
-}
+export type Employee = Director | Teacher;
 
 // Type predicate to check if an employee is a Director
-function isDirector(employee: Employee): employee is Director {
-  return employee.salary >= 500;
+export function isDirector(employee: Employee): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
 }
 
 // Function that executes work based on employee type
-function executeWork(employee: Employee): void {
+export function executeWork(employee: Employee): string {
   if (isDirector(employee)) {
-    workDirectorTasks();
+    return employee.workDirectorTasks();
   } else {
-    workTeacherTasks();
+    return (employee as Teacher).workTeacherTasks();
+  }
+}
+
+// Factory function to create employees
+export function createEmployee(salary: number): Employee {
+  if (salary < 500) {
+    return {
+      name: "Teacher Employee",
+      salary,
+      workTeacherTasks: () => "Getting to work",
+    };
+  } else {
+    return {
+      name: "Director Employee",
+      salary,
+      workDirectorTasks: () => "Getting to director tasks",
+    };
   }
 }
 
 // Example usage
-executeWork(createEmployee(200));  // Output: Getting to work
-executeWork(createEmployee(1000)); // Output: Getting to director tasks
+console.log(executeWork(createEmployee(200)));  // Output: Getting to work
+console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
 
