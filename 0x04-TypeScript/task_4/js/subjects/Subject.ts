@@ -1,16 +1,20 @@
 // task_4/js/subjects/Subject.ts
 export namespace Subjects {
-  // Teacher interface
+  // Base Teacher interface
   export interface Teacher {
     firstName: string;
     lastName: string;
   }
 
-  // Subject class (not interface)
+  // Subject class
   export class Subject {
+    // Teacher assigned to this subject
     teacher: Teacher;
 
-    // ALX expects this exact method signature
+    /**
+     * Assign a teacher to this subject
+     * @param teacher - an object implementing Teacher interface
+     */
     setTeacher(teacher: Teacher): void {
       this.teacher = teacher;
     }
