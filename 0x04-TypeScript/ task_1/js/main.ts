@@ -48,10 +48,17 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number;
 }
+// 1. Define the interface for the function signature
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName}. ${lastName}`;
-}
+// 2. Implement the function that fulfills the interface contract
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  // It returns the full firstName followed by the full lastName, separated by a space
+  return `${firstName} ${lastName}`;
+};
+
+// Example Usage:
+const result = printTeacher("John", "Doe");
+console.log(result); // Output: John Doe
