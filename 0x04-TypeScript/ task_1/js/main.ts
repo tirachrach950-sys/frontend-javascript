@@ -48,3 +48,10 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number;
 }
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName} ${lastName}`;
+}
