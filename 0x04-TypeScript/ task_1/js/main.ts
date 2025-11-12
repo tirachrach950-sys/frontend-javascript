@@ -48,11 +48,10 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number;
 }
- interface printTeacherFunction {
+interface printTeacherFunction {
   (obj: { firstName: string; lastName: string }): string;
 }
 
- function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
   return `${firstName[0]}. ${lastName}`;
 }
-
