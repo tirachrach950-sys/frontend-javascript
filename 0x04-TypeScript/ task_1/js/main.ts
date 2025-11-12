@@ -48,17 +48,24 @@ interface Teacher {
 interface Directors extends Teacher {
   numberOfReports: number;
 }
-// 1. Define the interface for the function signature
+// Define the interface for the function signature
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (name: TeacherName): string;
 }
 
-// 2. Implement the function that fulfills the interface contract
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  // It returns the full firstName followed by the full lastName, separated by a space
-  return `${firstName} ${lastName}`;
+// Implement the printTeacher function
+const printTeacher: printTeacherFunction = (name) => {
+  // Extract the first letter of firstName and append a period, a space, and the full lastName
+  const firstInitial = name.firstName.charAt(0);
+  return `${firstInitial}. ${name.lastName}`;
 };
 
-// Example Usage:
+// Example Usage (for testing purposes):
+const teacher = { firstName: "John", lastName: "Doe" };
+console.log(printTeacher(teacher)); // Output: J. Doe
+
+const teacher2 = { firstName: "Jane", lastName: "Smith" };
+console.log(printTeacher(teacher2)); // Output: J. Smith
+
 const result = printTeacher("John", "Doe");
 console.log(result); // Output: John Doe
