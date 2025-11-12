@@ -21,9 +21,9 @@ export function isDirector(employee: Employee): employee is Director {
 // Function that executes work based on employee type
 export function executeWork(employee: Employee): string {
   if (isDirector(employee)) {
-    return employee.workDirectorTasks();
+    return employee.workDirectorTasks();   // ✅ must return
   } else {
-    return (employee as Teacher).workTeacherTasks();
+    return (employee as Teacher).workTeacherTasks(); // ✅ must return
   }
 }
 
@@ -47,4 +47,3 @@ export function createEmployee(salary: number): Employee {
 // Example usage
 console.log(executeWork(createEmployee(200)));  // Output: Getting to work
 console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
-
